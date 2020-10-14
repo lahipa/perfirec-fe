@@ -1,0 +1,115 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login .login__title {
+  margin-bottom: 50px;
+}
+
+.login .login__input {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login .login__input > label {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.login .login__input > input,
+.login .login__input > select {
+  height: 37px;
+  width: 100%;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px 10px;
+  font-size: 18px;
+  font: inherit;
+  font-weight: 300;
+  outline-width: 0;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.login__other {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100px;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.login__devider {
+  content: "";
+  margin: 55px 0 62px;
+  height: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__deviderouterline {
+  border-bottom: 1px solid #555;
+  display: inline-block;
+  width: 35%;
+}
+
+.login__devidertexts {
+  width: 25%;
+  text-align: center;
+  margin: 0 20px;
+}
+
+.button__withother {
+  padding: 10px 70px;
+  background-color: #e0e0e0;
+  color: #888;
+  font-size: 18px;
+  outline-width: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 17px;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  -ms-border-radius: 17px;
+  -o-border-radius: 17px;
+}
+
+.button__withother:hover {
+  background-color: #a0a0a0;
+}
+
+.button__google {
+  background-color: #e3421e;
+  color: white;
+}
+
+.button__google:hover {
+  background-color: #b93518;
+}
+
+.button__facebook {
+  background-color: #1eb4e3;
+  color: white;
+}
+
+.button__facebook:hover {
+  background-color: #1a97bd;
+}
+
+.login__ornament {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}

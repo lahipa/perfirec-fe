@@ -1,0 +1,42 @@
+.invite {
+  display: flex;
+  flex: 0.7;
+  align-items: center;
+}
+
+.invite > input {
+  flex: 1;
+  height: 46px;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 15px;
+  font-size: 18px !important;
+  font: inherit;
+  font-weight: 300;
+  outline-width: 0;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.invite > button {
+  margin-left: 20px;
+  height: 46px;
+  padding: 0 70px;
+  background-color: #ffce4f;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  outline-width: 0;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.invite > button:hover {
+  background-color: #e2b43f;
+}

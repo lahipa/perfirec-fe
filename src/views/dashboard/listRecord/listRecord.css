@@ -1,0 +1,23 @@
+.record .recordItem {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.record .recordItem__header {
+  background-color: #24b0ff;
+}
+
+.record .recordItem__header > .MuiCardHeader-content {
+  color: white;
+}
+
+.record .recordItem__header > .MuiCardHeader-content .MuiCardHeader-title {
+  font-size: 18px;
+}
+
+.record .recordItem__footer {
+  justify-content: flex-end;
+}

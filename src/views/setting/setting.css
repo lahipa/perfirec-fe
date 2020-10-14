@@ -1,0 +1,118 @@
+.setting {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.setting__card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 80%;
+  z-index: 1;
+  background-color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.setting__form {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+}
+
+.setting__formcontrol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.setting__formcontrol > label {
+  margin-right: 20px;
+  flex: 1.5;
+}
+
+.setting__formcontrol > .setting__forminput {
+  flex: 3.5;
+  height: 42px;
+  font-size: 20px !important;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 15px;
+  outline-width: 0;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.setting__formcontrol > .setting__forminput:disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.setting .MuiDivider-root {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.setting__linked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.setting__linkedbutton {
+  padding: 20px;
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.button__linked {
+  padding: 7px 70px;
+  background-color: #e5e5e5;
+  color: #999;
+  font-size: 16px;
+  outline-width: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 17px;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  -ms-border-radius: 17px;
+  -o-border-radius: 17px;
+}
+
+.button__linked:hover {
+  background-color: #ffc00e;
+}
+
+.button__linked:disabled {
+  background-color: lightgray;
+  color: white;
+  cursor: none;
+}
+
+.button__linked.facebook:hover,
+.button__linked.facebook.linked {
+  background-color: #1eb4e3;
+  color: white;
+}
+
+.button__linked.google:hover,
+.button__linked.google.linked {
+  background-color: #e3421e;
+  color: white;
+}
