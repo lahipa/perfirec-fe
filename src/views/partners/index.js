@@ -10,6 +10,7 @@ import { getRecordById, updateRecordMember } from "../../store/actions";
 import { createLoadingSelector } from "../../store/selector";
 import { Sidebar } from "../../templates/navigation";
 import Lists from "./lists";
+import EmptyDataImg from "../../asset/graphic.png";
 
 const Partners = (props) => {
   const {
@@ -80,25 +81,47 @@ const Partners = (props) => {
                       </button>
                     </div>
                   </div>
-
-                  <Paper variant="outlined">
-                    <div className="panel">
-                      <div className="panel__header">
-                        {show ? (
-                          <Skeleton animation="wave" height={20} width={150} />
-                        ) : (
-                          <Typography variant="body1">Your Partner</Typography>
-                        )}
-                      </div>
-                      <div className="panel__content">
-                        {record.members
-                          ?.filter((val) => val.user_id !== user.user?.id)
-                          .map((val, key) => {
-                            return <Lists datas={val} key={key} show={show} />;
-                          })}
-                      </div>
+                  {record.members?.filter(
+                    (val) => val.user_id !== user.user?.id
+                  ).length === 0 ? (
+                    <div className="content__empty">
+                      <Typography
+                        variant="body2"
+                        className="content__emptytext"
+                      >
+                        You don’t have set any transaction. <br />
+                        Create one in seconds.
+                      </Typography>
+                      <img src={EmptyDataImg} alt="empty-icons-img" />
                     </div>
-                  </Paper>
+                  ) : (
+                    <Paper variant="outlined">
+                      <div className="panel">
+                        <div className="panel__header">
+                          {show ? (
+                            <Skeleton
+                              animation="wave"
+                              height={20}
+                              width={150}
+                            />
+                          ) : (
+                            <Typography variant="body1">
+                              Your Partner
+                            </Typography>
+                          )}
+                        </div>
+                        <div className="panel__content">
+                          {record.members
+                            ?.filter((val) => val.user_id !== user.user?.id)
+                            .map((val, key) => {
+                              return (
+                                <Lists datas={val} key={key} show={show} />
+                              );
+                            })}
+                        </div>
+                      </div>
+                    </Paper>
+                  )}
                 </Fragment>
               )}
             </div>

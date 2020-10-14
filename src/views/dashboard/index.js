@@ -102,7 +102,11 @@ function Dashboard(props) {
   );
 }
 
-const loadingSelector = createLoadingSelector(["GET_RECORD", "ADD_RECORD"]);
+const loadingSelector = createLoadingSelector([
+  "AUTH",
+  "GET_RECORD",
+  "ADD_RECORD",
+]);
 
 const mapStateToProps = (state) => {
   return {

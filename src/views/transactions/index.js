@@ -24,6 +24,7 @@ const Transaction = (props) => {
   const {
     match,
     user,
+    raw,
     transactions,
     balance,
     getTransactions,
@@ -87,6 +88,10 @@ const Transaction = (props) => {
     setOpen(false);
   };
 
+  const arrnumber = raw.map((val) => val.amount);
+  const positive = arrnumber.filter((val) => val >= 0);
+  const negative = arrnumber.filter((val) => val < 0);
+
   const meta = {
     title: `${process.env.REACT_APP_BRAND} - Your Web Solution`,
     description: `${process.env.REACT_APP_BRAND} is the solution for all your needs`,
@@ -133,11 +138,21 @@ const Transaction = (props) => {
                       {transactions.length === 0 ? (
                         <Typography variant="body2">
                           <span className="color__green">
-                            Income: {convertToIdr(2000000)}
+                            Income:{" "}
+                            {convertToIdr(
+                              Math.abs(
+                                positive.reduce((prev, curr) => prev + curr, 0)
+                              )
+                            )}
                           </span>{" "}
                           |{" "}
                           <span className="color__red">
-                            Expense: {convertToIdr(5000000)}
+                            Expense:{" "}
+                            {convertToIdr(
+                              Math.abs(
+                                negative.reduce((prev, curr) => prev + curr, 0)
+                              )
+                            )}
                           </span>
                         </Typography>
                       ) : show ? (
@@ -145,11 +160,21 @@ const Transaction = (props) => {
                       ) : (
                         <Typography variant="body2">
                           <span className="color__green">
-                            Income: {convertToIdr(2000000)}
+                            Income:{" "}
+                            {convertToIdr(
+                              Math.abs(
+                                positive.reduce((prev, curr) => prev + curr, 0)
+                              )
+                            )}
                           </span>{" "}
                           |{" "}
                           <span className="color__red">
-                            Expense: {convertToIdr(5000000)}
+                            Expense:{" "}
+                            {convertToIdr(
+                              Math.abs(
+                                negative.reduce((prev, curr) => prev + curr, 0)
+                              )
+                            )}
                           </span>
                         </Typography>
                       )}
@@ -258,6 +283,7 @@ const loadingSelector = createLoadingSelector([
 const mapStateToProps = (state) => {
   return {
     transactions: state.trxReducer.transactions,
+    raw: state.trxReducer.raw,
     balance: state.blncReducer.balance,
     user: state.usrReducer.user,
     record: state.rcrdReducer.record,

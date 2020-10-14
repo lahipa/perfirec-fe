@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   transactions: [],
+  raw: [],
 };
 
 const trxReducer = (state = initialState, action) => {
@@ -29,6 +30,7 @@ const trxReducer = (state = initialState, action) => {
       return {
         ...state,
         transactions: groupArrays,
+        raw: payload,
       };
 
     default:

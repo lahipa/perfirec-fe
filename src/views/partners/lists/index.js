@@ -47,7 +47,7 @@ const Lists = (props) => {
         {show ? (
           <Skeleton variant="circle" height={60} width={60} />
         ) : (
-          <Avatar alt="my-avatar" />
+          <Avatar alt="my-avatar" src={memberData.avatar} />
         )}
         <div className="list__infoText">
           {show ? (
