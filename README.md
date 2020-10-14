@@ -1,6 +1,6 @@
-# starter-web
+# perfirec-web
 
-Description: create fresh start of web apps
+Description: create and manage your personal financial.
 
 ## Setup
 
