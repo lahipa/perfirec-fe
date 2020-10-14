@@ -28,7 +28,6 @@ export const getBalance = (idRecords, token = "") => {
         });
       })
       .catch((err) => {
-        console.log(err.response);
         return dispatch({
           type: actionTypes.GET_BALANCE_FAILURE,
           payload: err.response?.data.status,
