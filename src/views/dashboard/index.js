@@ -6,13 +6,21 @@ import Layout from "../../templates";
 import { Grid, CircularProgress } from "@material-ui/core";
 
 import { connect } from "react-redux";
-import { addRecord, getRecord } from "../../store/actions";
+import { addRecord, getRecord, getCurrency } from "../../store/actions";
 import { createLoadingSelector } from "../../store/selector";
 import AddRecord from "./addRecord";
 import ListRecord from "./listRecord";
 
 function Dashboard(props) {
-  const { match, user, records, isLoading, addRecord, getRecord } = props;
+  const {
+    match,
+    user,
+    records,
+    isLoading,
+    addRecord,
+    getRecord,
+    getCurrency,
+  } = props;
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(true);
 
@@ -24,12 +32,13 @@ function Dashboard(props) {
 
     if (match) {
       getRecord(user.user?.id, user.token);
+      getCurrency(user.token);
     }
 
     return () => {
       clearTimeout(timerShow);
     };
-  }, [match, getRecord, user]);
+  }, [match, user, getRecord, getCurrency]);
 
   const handleSubmit = (data) => {
     addRecord(user.user?.id, data, user.token);
@@ -120,6 +129,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addRecord: (id, data, token) => dispatch(addRecord(id, data, token)),
     getRecord: (id, token) => dispatch(getRecord(id, token)),
+    getCurrency: (token) => dispatch(getCurrency(token)),
   };
 };
 
