@@ -92,7 +92,19 @@ code {
   display: flex;
   padding: 15px 30px;
   flex-direction: column;
+  color: rgba(0, 0, 0, 0.87);
   background-color: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -moz-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -ms-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .panel__header {

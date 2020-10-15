@@ -28,12 +28,20 @@ const Adds = (props) => {
             <Avatar />
             <div className="dialog__input">
               <label>Wallets Name</label>
-              <input type="text" onChange={(e) => handleForm(e, "name")} />
+              <input
+                type="text"
+                onChange={(e) => handleForm(e, "name")}
+                required
+              />
             </div>
 
             <div className="dialog__input">
               <label>Balance</label>
-              <input type="number" onChange={(e) => handleForm(e, "balance")} />
+              <input
+                type="number"
+                onChange={(e) => handleForm(e, "balance")}
+                required
+              />
             </div>
 
             <button type="submit" className="button__second">

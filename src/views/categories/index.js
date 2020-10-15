@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./categories.css";
 import DocumentMeta from "react-document-meta";
 import Layout from "../../templates";
-import { Paper, Typography, CircularProgress } from "@material-ui/core";
+import { Typography, CircularProgress } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import { connect } from "react-redux";
@@ -127,102 +127,94 @@ const Categories = (props) => {
                     </button>
                   </div>
 
-                  {categories.length === 0 ? (
-                    <Fragment>
-                      <div id="income" className="tabcontent">
-                        <div className="content__empty">
-                          <Typography
-                            variant="body2"
-                            className="content__emptytext"
-                          >
-                            You don’t have set any transaction. <br />
-                            Create one in seconds.
-                          </Typography>
-                          <img src={EmptyDataImg} alt="empty-icons-img" />
-                        </div>
+                  {categories.filter((val) => val.type === "income").length ===
+                  0 ? (
+                    <div id="income" className="tabcontent">
+                      <div className="content__empty">
+                        <Typography
+                          variant="body2"
+                          className="content__emptytext"
+                        >
+                          You don’t have set any income category. <br />
+                          Create one in seconds.
+                        </Typography>
+                        <img src={EmptyDataImg} alt="empty-icons-img" />
                       </div>
-
-                      <div id="expense" className="tabcontent">
-                        <div className="content__empty">
-                          <Typography
-                            variant="body2"
-                            className="content__emptytext"
-                          >
-                            You don’t have set any transaction. <br />
-                            Create one in seconds.
-                          </Typography>
-                          <img src={EmptyDataImg} alt="empty-icons-img" />
-                        </div>
-                      </div>
-                    </Fragment>
+                    </div>
                   ) : (
-                    <Paper variant="outlined">
-                      <div id="income" className="panel tabcontent">
-                        <div className="panel__header">
-                          {show ? (
-                            <Skeleton
-                              animation="wave"
-                              height={20}
-                              width={150}
-                            />
-                          ) : (
-                            <Typography variant="body1">
-                              Income Categories
-                            </Typography>
-                          )}
-                        </div>
-                        <div className="panel__content">
-                          {categories
-                            .filter((val) => val.type === "income")
-                            .map((val, key) => {
-                              return (
-                                <Lists
-                                  listData={val}
-                                  key={key}
-                                  doUpdate={handleUpdate}
-                                  type="income"
-                                  show={show}
-                                />
-                              );
-                            })}
-                        </div>
+                    <div id="income" className="panel tabcontent">
+                      <div className="panel__header">
+                        {show ? (
+                          <Skeleton animation="wave" height={20} width={150} />
+                        ) : (
+                          <Typography variant="body1">
+                            Income Categories
+                          </Typography>
+                        )}
                       </div>
+                      <div className="panel__content">
+                        {categories
+                          .filter((val) => val.type === "income")
+                          .map((val, key) => {
+                            return (
+                              <Lists
+                                listData={val}
+                                key={key}
+                                doUpdate={handleUpdate}
+                                type="income"
+                                show={show}
+                              />
+                            );
+                          })}
+                      </div>
+                    </div>
+                  )}
 
-                      <div
-                        id="expense"
-                        className="panel tabcontent"
-                        style={{ display: "none" }}
-                      >
-                        <div className="panel__header">
-                          {show ? (
-                            <Skeleton
-                              animation="wave"
-                              height={20}
-                              width={150}
-                            />
-                          ) : (
-                            <Typography variant="body1">
-                              Expense Categories
-                            </Typography>
-                          )}
-                        </div>
-                        <div className="panel__content">
-                          {categories
-                            .filter((val) => val.type === "expense")
-                            .map((val, key) => {
-                              return (
-                                <Lists
-                                  listData={val}
-                                  key={key}
-                                  doUpdate={handleUpdate}
-                                  type="expense"
-                                  show={show}
-                                />
-                              );
-                            })}
-                        </div>
+                  {categories.filter((val) => val.type === "expense").length ===
+                  0 ? (
+                    <div id="expense" className="tabcontent">
+                      <div className="content__empty">
+                        <Typography
+                          variant="body2"
+                          className="content__emptytext"
+                        >
+                          You don’t have set any expense category. <br />
+                          Create one in seconds.
+                        </Typography>
+                        <img src={EmptyDataImg} alt="empty-icons-img" />
                       </div>
-                    </Paper>
+                    </div>
+                  ) : (
+                    <div
+                      id="expense"
+                      className="panel tabcontent"
+                      style={{ display: "none" }}
+                    >
+                      <div className="panel__header">
+                        {show ? (
+                          <Skeleton animation="wave" height={20} width={150} />
+                        ) : (
+                          <Typography variant="body1">
+                            Expense Categories
+                          </Typography>
+                        )}
+                      </div>
+                      <div className="panel__content">
+                        {categories
+                          .filter((val) => val.type === "expense")
+                          .map((val, key) => {
+                            return (
+                              <Lists
+                                listData={val}
+                                key={key}
+                                doUpdate={handleUpdate}
+                                type="expense"
+                                show={show}
+                              />
+                            );
+                          })}
+                      </div>
+                    </div>
                   )}
                 </Fragment>
               )}

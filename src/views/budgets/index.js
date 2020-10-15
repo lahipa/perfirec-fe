@@ -107,7 +107,7 @@ const Budgets = (props) => {
                         variant="body2"
                         className="content__emptytext"
                       >
-                        You don’t have set any transaction. <br />
+                        You don’t have set any budget setting. <br />
                         Create one in seconds.
                       </Typography>
                       <img src={EmptyDataImg} alt="empty-icons-img" />

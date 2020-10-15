@@ -36,6 +36,7 @@ const Adds = (props) => {
                   <input
                     type="number"
                     onChange={(e) => handleForm(e, "amount")}
+                    required
                   />
                 </div>
                 <Grid container spacing={5}>
@@ -43,8 +44,9 @@ const Adds = (props) => {
                     <div className="dialog__input">
                       <label>Date From</label>
                       <input
-                        type="text"
+                        type="date"
                         onChange={(e) => handleForm(e, "from")}
+                        required
                       />
                     </div>
                   </Grid>
@@ -52,8 +54,9 @@ const Adds = (props) => {
                     <div className="dialog__input">
                       <label>Date To</label>
                       <input
-                        type="text"
+                        type="date"
                         onChange={(e) => handleForm(e, "to")}
+                        required
                       />
                     </div>
                   </Grid>
@@ -65,12 +68,15 @@ const Adds = (props) => {
               </Grid>
               <Grid item sm={6}>
                 <div className="dialog__input">
-                  <div style={{ height: "86px" }}>&nbsp;</div>
+                  <div style={{ height: "86px" }} />
                 </div>
                 <div className="dialog__input">
                   <label>Category</label>
                   <div className="selects">
-                    <select onChange={(e) => handleForm(e, "category_id")}>
+                    <select
+                      onChange={(e) => handleForm(e, "category_id")}
+                      required
+                    >
                       <option value="">Pilih</option>
                       {categories
                         .filter(

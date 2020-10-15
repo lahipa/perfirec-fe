@@ -69,6 +69,7 @@ const Profile = (props) => {
                         value={data.name || ""}
                         disabled={isLoading}
                         onChange={(e) => handleForm(e, "name")}
+                        required
                       />
                     </div>
 
@@ -80,6 +81,7 @@ const Profile = (props) => {
                         value={data.username || ""}
                         disabled={true}
                         onChange={(e) => handleForm(e, "username")}
+                        required
                       />
                     </div>
 
@@ -91,13 +93,14 @@ const Profile = (props) => {
                         value={data.email || ""}
                         disabled={isLoading}
                         onChange={(e) => handleForm(e, "email")}
+                        required
                       />
                     </div>
 
                     <div className="profile__formcontrol">
                       <label>Date of Birth:</label>
                       <input
-                        type="text"
+                        type="date"
                         className="profile__forminput"
                         value={data.dateOfBirth || ""}
                         disabled={isLoading}

@@ -94,6 +94,7 @@ const Lists = (props) => {
                 type="text"
                 value={data.name}
                 onChange={(e) => handleForm(e, "name")}
+                required
               />
             </div>
 
@@ -103,6 +104,7 @@ const Lists = (props) => {
                 type="number"
                 value={data.balance}
                 onChange={(e) => handleForm(e, "balance")}
+                required
               />
             </div>
 

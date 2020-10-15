@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./partners.css";
 import DocumentMeta from "react-document-meta";
 import Layout from "../../templates";
-import { Paper, Typography, CircularProgress } from "@material-ui/core";
+import { Typography, CircularProgress } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import { connect } from "react-redux";
@@ -75,6 +75,7 @@ const Partners = (props) => {
                       <input
                         type="text"
                         onChange={(e) => handleForm(e, "email")}
+                        required
                       />
                       <button type="submit" onClick={handleSubmit}>
                         Invite
@@ -95,32 +96,22 @@ const Partners = (props) => {
                       <img src={EmptyDataImg} alt="empty-icons-img" />
                     </div>
                   ) : (
-                    <Paper variant="outlined">
-                      <div className="panel">
-                        <div className="panel__header">
-                          {show ? (
-                            <Skeleton
-                              animation="wave"
-                              height={20}
-                              width={150}
-                            />
-                          ) : (
-                            <Typography variant="body1">
-                              Your Partner
-                            </Typography>
-                          )}
-                        </div>
-                        <div className="panel__content">
-                          {record.members
-                            ?.filter((val) => val.user_id !== user.user?.id)
-                            .map((val, key) => {
-                              return (
-                                <Lists datas={val} key={key} show={show} />
-                              );
-                            })}
-                        </div>
+                    <div className="panel">
+                      <div className="panel__header">
+                        {show ? (
+                          <Skeleton animation="wave" height={20} width={150} />
+                        ) : (
+                          <Typography variant="body1">Your Partner</Typography>
+                        )}
                       </div>
-                    </Paper>
+                      <div className="panel__content">
+                        {record.members
+                          ?.filter((val) => val.user_id !== user.user?.id)
+                          .map((val, key) => {
+                            return <Lists datas={val} key={key} show={show} />;
+                          })}
+                      </div>
+                    </div>
                   )}
                 </Fragment>
               )}

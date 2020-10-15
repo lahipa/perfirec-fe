@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Paper, Typography } from "@material-ui/core";
+import { Avatar, Typography } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import { connect } from "react-redux";
@@ -51,72 +51,67 @@ const Lists = (props) => {
   );
 
   return (
-    <Paper variant="outlined" key={datas._id} style={{ marginBottom: "30px" }}>
-      <div className="panel">
-        <div className="panel__header">
-          {show ? (
-            <Skeleton animation="wave" height={20} width={150} />
-          ) : (
-            <Typography variant="body1">
-              {formatDateTime(datas.from, "dd MMMM")} to{" "}
-              {formatDateTime(datas.to, "dd MMMM")}
-            </Typography>
-          )}
+    <div className="panel" key={datas._id} style={{ marginBottom: "30px" }}>
+      <div className="panel__header">
+        {show ? (
+          <Skeleton animation="wave" height={20} width={150} />
+        ) : (
+          <Typography variant="body1">
+            {formatDateTime(datas.from, "dd MMMM")} to{" "}
+            {formatDateTime(datas.to, "dd MMMM")}
+          </Typography>
+        )}
 
-          {show ? (
-            <Skeleton animation="wave" height={20} width={200} />
-          ) : (
-            <Typography variant="h6">
-              Goal : {convertToIdr(datas.amount)}
-            </Typography>
-          )}
-        </div>
-        <div className="panel__content">
-          <div className="list">
-            <div className="list__info">
-              {show ? (
-                <Skeleton variant="circle" height={60} width={60} />
-              ) : (
-                <Avatar alt="my-avatar" />
-              )}
+        {show ? (
+          <Skeleton animation="wave" height={20} width={200} />
+        ) : (
+          <Typography variant="h6">
+            Goal : {convertToIdr(datas.amount)}
+          </Typography>
+        )}
+      </div>
+      <div className="panel__content">
+        <div className="list">
+          <div className="list__info">
+            {show ? (
+              <Skeleton variant="circle" height={60} width={60} />
+            ) : (
+              <Avatar alt="my-avatar" />
+            )}
 
-              <div className="list__infoText">
-                {show ? (
-                  <Skeleton animation="wave" height={30} width={200} />
-                ) : (
-                  <Typography variant="h5">
-                    {
-                      categories.find((cat) => cat._id === datas.category_id)
-                        .name
-                    }
-                  </Typography>
-                )}
-
-                {show ? (
-                  <Skeleton animation="wave" height={10} width={100} />
-                ) : (
-                  <Typography variant="caption">{datas.note}</Typography>
-                )}
-              </div>
-            </div>
-            <div className="list__right">
+            <div className="list__infoText">
               {show ? (
                 <Skeleton animation="wave" height={30} width={200} />
               ) : (
-                <Typography variant="h6">
-                  Left :{" "}
-                  <span className="color__green">
-                    {convertToIdr(datas.amount - budgetUsed)}
-                  </span>{" "}
-                  | Used :{" "}
-                  <span className="color__red">{convertToIdr(budgetUsed)}</span>
+                <Typography variant="h5">
+                  {categories.find((cat) => cat._id === datas.category_id).name}
                 </Typography>
+              )}
+
+              {show ? (
+                <Skeleton animation="wave" height={10} width={100} />
+              ) : (
+                <Typography variant="caption">{datas.note}</Typography>
               )}
             </div>
           </div>
+          <div className="list__right">
+            {show ? (
+              <Skeleton animation="wave" height={30} width={200} />
+            ) : (
+              <Typography variant="h6">
+                Left :{" "}
+                <span className="color__green">
+                  {convertToIdr(datas.amount - budgetUsed)}
+                </span>{" "}
+                | Used :{" "}
+                <span className="color__red">{convertToIdr(budgetUsed)}</span>
+              </Typography>
+            )}
+          </div>
         </div>
       </div>
-    </Paper>
+    </div>
   );
 };
 

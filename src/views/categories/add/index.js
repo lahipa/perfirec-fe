@@ -62,7 +62,11 @@ const Add = (props) => {
 
             <div className="dialog__input">
               <label>Category Name</label>
-              <input type="text" onChange={(e) => handleForm(e, "name")} />
+              <input
+                type="text"
+                onChange={(e) => handleForm(e, "name")}
+                required
+              />
             </div>
 
             <div className="dialog__input">
@@ -72,6 +76,7 @@ const Add = (props) => {
                 aria-label="cattype"
                 name="cattype"
                 onChange={(e) => handleForm(e, "type")}
+                required
               >
                 <FormControlLabel
                   value="income"

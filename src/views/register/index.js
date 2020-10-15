@@ -80,6 +80,7 @@ const Register = (props) => {
                   onChange={(e) => handleForm(e, "name")}
                   autoComplete="name"
                   disabled={isLoading}
+                  required
                 />
               </div>
 
@@ -90,6 +91,7 @@ const Register = (props) => {
                   onChange={(e) => handleForm(e, "email")}
                   autoComplete="email"
                   disabled={isLoading}
+                  required
                 />
               </div>
 
@@ -100,6 +102,7 @@ const Register = (props) => {
                   onChange={(e) => handleForm(e, "username")}
                   autoComplete="username"
                   disabled={isLoading}
+                  required
                 />
               </div>
 
@@ -109,6 +112,7 @@ const Register = (props) => {
                   type="password"
                   onChange={(e) => handleForm(e, "password")}
                   disabled={isLoading}
+                  required
                 />
               </div>
 

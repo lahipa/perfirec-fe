@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import "./transaction.css";
 import DocumentMeta from "react-document-meta";
 import Layout from "../../templates";
-import { Paper, Typography, CircularProgress } from "@material-ui/core";
+import { Typography, CircularProgress } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import { connect } from "react-redux";
@@ -46,7 +46,7 @@ const Transaction = (props) => {
     if (match) {
       getTransactions(
         match.params.book,
-        { from: "2020-01-01", to: "2020-10-30" },
+        { from: "2020-01-01", to: "2020-12-31" },
         user.token
       );
       getCategory(match.params.book, user.token);
@@ -74,7 +74,7 @@ const Transaction = (props) => {
     addTransactions(
       match.params.book,
       newData,
-      { from: "2020-10-09", to: "2020-10-13" },
+      { from: "2020-01-01", to: "2020-12-31" },
       getBalance,
       user.token
     );
@@ -140,18 +140,14 @@ const Transaction = (props) => {
                           <span className="color__green">
                             Income:{" "}
                             {convertToIdr(
-                              Math.abs(
-                                positive.reduce((prev, curr) => prev + curr, 0)
-                              )
+                              Math.abs(positive.reduce((a, b) => a + b, 0))
                             )}
                           </span>{" "}
                           |{" "}
                           <span className="color__red">
                             Expense:{" "}
                             {convertToIdr(
-                              Math.abs(
-                                negative.reduce((prev, curr) => prev + curr, 0)
-                              )
+                              Math.abs(negative.reduce((a, b) => a + b, 0))
                             )}
                           </span>
                         </Typography>
@@ -162,18 +158,14 @@ const Transaction = (props) => {
                           <span className="color__green">
                             Income:{" "}
                             {convertToIdr(
-                              Math.abs(
-                                positive.reduce((prev, curr) => prev + curr, 0)
-                              )
+                              Math.abs(positive.reduce((a, b) => a + b, 0))
                             )}
                           </span>{" "}
                           |{" "}
                           <span className="color__red">
                             Expense:{" "}
                             {convertToIdr(
-                              Math.abs(
-                                negative.reduce((prev, curr) => prev + curr, 0)
-                              )
+                              Math.abs(negative.reduce((a, b) => a + b, 0))
                             )}
                           </span>
                         </Typography>
@@ -203,55 +195,52 @@ const Transaction = (props) => {
                       (prev, val) => prev + val.amount,
                       0
                     );
+
                     return (
-                      <Paper
-                        variant="outlined"
+                      <div
+                        className="panel"
                         key={key}
                         style={{ marginBottom: "30px" }}
                       >
-                        <div className="panel">
-                          <div className="panel__header">
-                            {show ? (
-                              <Skeleton
-                                animation="wave"
-                                height={20}
-                                width={150}
-                              />
-                            ) : (
-                              <Typography variant="body1">
-                                {formatDateTime(val.date, "dddd, dd-MMMM")}
-                              </Typography>
-                            )}
+                        <div className="panel__header">
+                          {show ? (
+                            <Skeleton
+                              animation="wave"
+                              height={20}
+                              width={150}
+                            />
+                          ) : (
+                            <Typography variant="body1">
+                              {formatDateTime(val.date, "dddd, dd-MMMM")}
+                            </Typography>
+                          )}
 
-                            {show ? (
-                              <Skeleton
-                                animation="wave"
-                                height={20}
-                                width={200}
-                              />
-                            ) : (
-                              <Typography variant="h6">
-                                <span
-                                  className={
-                                    sumAmount > 0
-                                      ? "color__green"
-                                      : "color__red"
-                                  }
-                                >
-                                  {convertToIdr(sumAmount)}
-                                </span>
-                              </Typography>
-                            )}
-                          </div>
-                          <div className="panel__content">
-                            {val.lists.map((val) => {
-                              return (
-                                <Lists datas={val} key={val._id} show={show} />
-                              );
-                            })}
-                          </div>
+                          {show ? (
+                            <Skeleton
+                              animation="wave"
+                              height={20}
+                              width={200}
+                            />
+                          ) : (
+                            <Typography variant="h6">
+                              <span
+                                className={
+                                  sumAmount > 0 ? "color__green" : "color__red"
+                                }
+                              >
+                                {convertToIdr(sumAmount)}
+                              </span>
+                            </Typography>
+                          )}
                         </div>
-                      </Paper>
+                        <div className="panel__content">
+                          {val.lists.map((val) => {
+                            return (
+                              <Lists datas={val} key={val._id} show={show} />
+                            );
+                          })}
+                        </div>
+                      </div>
                     );
                   })}
                 </Fragment>

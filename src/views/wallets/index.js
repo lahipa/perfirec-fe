@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./wallet.css";
 import DocumentMeta from "react-document-meta";
 import Layout from "../../templates";
-import { Paper, Typography, CircularProgress } from "@material-ui/core";
+import { Typography, CircularProgress } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 import { connect } from "react-redux";
@@ -122,39 +122,33 @@ const Wallet = (props) => {
                         variant="body2"
                         className="content__emptytext"
                       >
-                        You don’t have set any transaction. <br />
+                        You don’t have set any wallet. <br />
                         Create one in seconds.
                       </Typography>
                       <img src={EmptyDataImg} alt="empty-icons-img" />
                     </div>
                   ) : (
-                    <Paper variant="outlined">
-                      <div className="panel">
-                        <div className="panel__header">
-                          {show ? (
-                            <Skeleton
-                              animation="wave"
-                              height={20}
-                              width={150}
-                            />
-                          ) : (
-                            <Typography variant="body1">Wallets</Typography>
-                          )}
-                        </div>
-                        <div className="panel__content">
-                          {wallets.map((val) => {
-                            return (
-                              <Lists
-                                listData={val}
-                                key={val._id}
-                                doUpdate={handleUpdate}
-                                show={show}
-                              />
-                            );
-                          })}
-                        </div>
+                    <div className="panel">
+                      <div className="panel__header">
+                        {show ? (
+                          <Skeleton animation="wave" height={20} width={150} />
+                        ) : (
+                          <Typography variant="body1">Wallets</Typography>
+                        )}
                       </div>
-                    </Paper>
+                      <div className="panel__content">
+                        {wallets.map((val) => {
+                          return (
+                            <Lists
+                              listData={val}
+                              key={val._id}
+                              doUpdate={handleUpdate}
+                              show={show}
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
                   )}
                 </Fragment>
               )}

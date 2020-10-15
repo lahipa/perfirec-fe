@@ -53,12 +53,16 @@ const Adds = (props) => {
                   <input
                     type="number"
                     onChange={(e) => handleForm(e, "amount")}
+                    required
                   />
                 </div>
                 <div className="dialog__input">
                   <label>Wallets</label>
                   <div className="selects">
-                    <select onChange={(e) => handleForm(e, "wallet_id")}>
+                    <select
+                      onChange={(e) => handleForm(e, "wallet_id")}
+                      required
+                    >
                       <option value="">Pilih</option>
                       {wallets.map((val, key) => {
                         return (
@@ -73,14 +77,21 @@ const Adds = (props) => {
                 </div>
                 <div className="dialog__input">
                   <label>Date</label>
-                  <input type="text" onChange={(e) => handleForm(e, "date")} />
+                  <input
+                    type="date"
+                    onChange={(e) => handleForm(e, "date")}
+                    required
+                  />
                 </div>
               </Grid>
               <Grid item sm={6}>
                 <div className="dialog__input">
                   <label>Category</label>
                   <div className="selects">
-                    <select onChange={(e) => handleForm(e, "category_id")}>
+                    <select
+                      onChange={(e) => handleForm(e, "category_id")}
+                      required
+                    >
                       <option value="">Pilih</option>
                       {categories
                         .filter((val) => val.parrent_id === "")
